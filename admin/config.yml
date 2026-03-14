@@ -1,0 +1,22 @@
+backend:
+  name: github
+  repo: tranlamnhatnam/novel-translator-dict
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "dictionary"
+    label: "Dictionary"
+    files:
+      - label: "Word List"
+        name: "words"
+        file: "data/dictionary.json"
+        fields:
+          - label: "Entries"
+            name: "entries"
+            widget: "list"
+            fields:
+              - { label: "Chinese", name: "cn", widget: "string" }
+              - { label: "Vietnamese", name: "vn", widget: "string" }
