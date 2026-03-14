@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: tranlamnhatnam/novel-translator-dict
+  name: git-gateway
   branch: main
 
 media_folder: "images"
