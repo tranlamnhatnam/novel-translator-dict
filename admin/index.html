@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dictionary Manager</title>
+</head>
+
+<body>
+
+    <h2>Dictionary Manager</h2>
+
+    <input id="cn" placeholder="Chinese word">
+    <input id="vn" placeholder="Vietnamese translation">
+    <button onclick="addWord()">Add</button>
+
+    <pre id="result"></pre>
+
+    <script>
+
+        const repo =
+            "https://api.github.com/repos/YOURNAME/novel-translator-dict/contents/data/dictionary.json"
+
+        async function loadDict() {
+
+            const res = await fetch(repo)
+            const data = await res.json()
+
+            const json = JSON.parse(atob(data.content))
+
+            window.dict = json
+
+            document.getElementById("result").textContent =
+                JSON.stringify(json, null, 2)
+
+        }
+
+        function addWord() {
+
+            const cn = document.getElementById("cn").value
+            const vn = document.getElementById("vn").value
+
+            dict[cn] = vn
+
+            document.getElementById("result").textContent =
+                JSON.stringify(dict, null, 2)
+
+        }
+
+        loadDict()
+
+    </script>
+
+</body>
+
+</html>
